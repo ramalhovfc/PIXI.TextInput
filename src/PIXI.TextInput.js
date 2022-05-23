@@ -50,7 +50,7 @@ class TextInput extends PIXI.Container{
 	}
 
 	set substituteText(substitute){
-		if(this._substituted==substitute) 
+		if(this._substituted==substitute)
 			return
 
 		this._substituted = substitute
@@ -139,7 +139,7 @@ class TextInput extends PIXI.Container{
 			this._setDOMInputVisible(true)
 
 		this._dom_input.focus()
-		
+
 	}
 
 	blur(){
@@ -178,7 +178,7 @@ class TextInput extends PIXI.Container{
 			this._dom_input = document.createElement('input')
 			this._dom_input.type = 'text'
 		}
-		
+
 		for(let key in this._input_style){
 			this._dom_input.style[key] = this._input_style[key]
 		}
@@ -288,7 +288,7 @@ class TextInput extends PIXI.Container{
 		if(this._needsNewBoxCache())
 			this._buildBoxCache()
 
-		if(this.state==this._previous.state 
+		if(this.state==this._previous.state
 			&& this._box==this._box_cache[this.state])
 			return
 
@@ -376,6 +376,8 @@ class TextInput extends PIXI.Container{
 		this.addChild(this._surrogate_mask)
 
 		this._surrogate = new PIXI.Text('',{})
+		this._surrogate.name = 'surrogate';
+		this._surrogate.anchor.set( 0 );
 		this.addChild(this._surrogate)
 
 		this._surrogate.mask = this._surrogate_mask
@@ -402,7 +404,7 @@ class TextInput extends PIXI.Container{
 			case 'center':
 				this._surrogate.x = input_bounds.width * 0.5 - this._surrogate.width * 0.5
 				break
-				
+
 			case 'right':
 				this._surrogate.x = input_bounds.width - padding[1] - this._surrogate.width
 				break
